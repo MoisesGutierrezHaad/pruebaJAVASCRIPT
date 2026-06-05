@@ -1,1 +1,236 @@
-l
+l# 📅 Workspace Reservation SPA
+
+Single Page Application (SPA) desarrollada con JavaScript Vanilla para gestionar reservas de espacios de trabajo compartidos. Permite autenticación de usuarios, control de roles, gestión de reservas y persistencia de sesión utilizando una API simulada con json-server.
+
+---
+
+## 🚀 Características
+
+### 🔐 Autenticación
+- Inicio de sesión mediante email y contraseña.
+- Persistencia de sesión utilizando LocalStorage.
+- Protección de rutas para usuarios no autenticados.
+
+### 👥 Gestión de Roles
+Existen dos tipos de usuarios:
+
+#### Administrador
+- Ver todas las reservas.
+- Aprobar reservas.
+- Rechazar reservas.
+- Editar cualquier reserva.
+- Eliminar reservas.
+- Visualizar estadísticas generales.
+
+#### Usuario
+- Crear reservas.
+- Ver únicamente sus reservas.
+- Editar reservas pendientes.
+- Cancelar reservas aprobadas.
+- Eliminar reservas propias.
+
+### 📆 Gestión de Reservas
+- Crear nuevas reservas.
+- Editar reservas existentes.
+- Validación de horarios.
+- Prevención de conflictos de reservas.
+- Estados de reserva:
+  - Pending
+  - Approved
+  - Rejected
+  - Cancelled
+
+### 🛡️ Validaciones
+- Campos obligatorios.
+- Hora de inicio menor que la hora de finalización.
+- No permite reservar un espacio ya ocupado en el mismo horario.
+- Control de permisos según rol.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+| Tecnología | Uso |
+|------------|-----|
+| JavaScript ES6+ | Lógica de negocio |
+| Vite | Bundler y servidor de desarrollo |
+| Tailwind CSS | Estilos |
+| JSON Server | Simulación de API REST |
+| LocalStorage | Persistencia de sesión |
+| Fetch API | Consumo de datos |
+| History API | Navegación SPA |
+
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+spa-reservas/
+│
+├── db.json
+├── package.json
+├── vite.config.js
+├── index.html
+│
+└── src/
+    ├── main.js
+    ├── style.css
+    ├── utils.js
+    │
+    ├── api/
+    │   └── http.js
+    │
+    ├── router/
+    │   └── router.js
+    │
+    ├── services/
+    │   └── reservation.service.js
+    │
+    ├── controllers/
+    │   ├── login.controller.js
+    │   ├── home.controller.js
+    │   └── reservationForm.controller.js
+    │
+    ├── views/
+    │   ├── loginView.js
+    │   ├── homeView.js
+    │   ├── reservationFormView.js
+    │   └── notFound.js
+    │
+    └── components/
+        ├── Sidebar.js
+        └── ReservationCard.js
+```
+
+---
+
+## ⚙️ Instalación
+
+### 1. Clonar el repositorio
+
+```bash
+git clone <url-del-repositorio>
+```
+
+### 2. Entrar al proyecto
+
+```bash
+cd spa-reservas
+```
+
+### 3. Instalar dependencias
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Ejecutar el Proyecto
+
+```bash
+npm run dev
+```
+
+Este comando inicia:
+
+- Vite en el puerto 5173.
+- JSON Server en el puerto 3001.
+
+Abrir:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## 🌐 API Simulada
+
+Base URL:
+
+```text
+http://localhost:3001
+```
+
+### Endpoints
+
+| Método | Endpoint | Descripción |
+|----------|----------|-------------|
+| GET | /users | Obtener usuarios |
+| GET | /users?email=&password= | Login |
+| GET | /reservations | Obtener reservas |
+| GET | /reservations/:id | Obtener reserva por id |
+| POST | /reservations | Crear reserva |
+| PATCH | /reservations/:id | Actualizar reserva |
+| DELETE | /reservations/:id | Eliminar reserva |
+
+---
+
+## 👨‍💻 Usuarios de Prueba
+
+### Administrador
+
+```text
+Email: admin@test.com
+Password: A123456
+```
+
+### Usuario 1
+
+```text
+Email: user@test.com
+Password: A123456
+```
+
+### Usuario 2
+
+```text
+Email: user2@test.com
+Password: A123456
+```
+
+---
+
+## 🔄 Flujo de la Aplicación
+
+1. El usuario inicia sesión.
+2. Se guarda la información de sesión en LocalStorage.
+3. El Router valida permisos de acceso.
+4. El usuario visualiza las reservas permitidas según su rol.
+5. Puede crear, editar, aprobar, rechazar o eliminar reservas según sus permisos.
+6. Los cambios se sincronizan mediante peticiones HTTP al JSON Server.
+
+---
+
+## 🎯 Conceptos Aplicados
+
+- Arquitectura SPA.
+- Patrón MVC simplificado.
+- Componentización.
+- Routing con History API.
+- Gestión de estado mediante LocalStorage.
+- Consumo de APIs REST.
+- Programación asíncrona con Async/Await.
+- Validación de formularios.
+- Control de acceso basado en roles.
+
+---
+
+## 📸 Posibles Mejoras Futuras
+
+- Registro de usuarios.
+- Recuperación de contraseña.
+- Calendario visual.
+- Filtros por fecha.
+- Búsqueda de reservas.
+- Paginación.
+- Backend real con Node.js y Express.
+- Base de datos SQL o MongoDB.
+- JWT para autenticación.
+
+---
+
+## 📄 Licencia
+
+Proyecto desarrollado con fines educativos y de práctica en JavaScript, Vite y arquitectura SPA.
